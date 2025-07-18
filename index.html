@@ -76,36 +76,42 @@
   <div class="logo">FRNDZ</div>
     <img src="FRNDZ_logo_website.png" alt="FRNDZ Logo" class="logo-img" />
   <div class="tagline">We met through FRNDZ.</div>
+
   <div class="email-signup">
     <form onsubmit="handleSubmit(event)">
       <input type="email" id="email" placeholder="Enter your email" required />
       <button type="submit">Notify Me</button>
     </form>
   </div>
-  <div class="footer">Launching soon on iOS – Follow us <a href="https://www.instagram.com/thefrndzapp" class="link-ig" target="_blank">@thefrndzapp</a> for updates</div>
 
-<script>
-  async function handleSubmit(e) {
-    e.preventDefault();
-    const email = document.getElementById('email').value;
-    const endpoint = 'https://script.google.com/macros/s/AKfycbwPkSNSIRqwIRC7I6NV5eN49Gw7PfRzOGC9-gRYptTMwWhrCOX9aj6GGyVkpNFQILRb8A/exec'; // Replace with your new Apps Script URL
-    const url = `${endpoint}?email=${encodeURIComponent(email)}`;
+  <div class="footer">Launching soon on iOS – follow us for updates</div>
 
-    try {
-      const response = await fetch(url); // GET request avoids CORS issues
-      if (response.ok) {
-        alert(`Thanks for signing up, ${email}! We'll keep you posted.`);
-        document.getElementById('email').value = '';
-      } else {
-        alert("Oops! Couldn't submit your email.");
+  <script>
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const endpoint = 'https://sheetdb.io/api/v1/muvpjklqdudub';
+
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ data: [{ email }] })
+        });
+
+        if (response.ok) {
+          alert(`Thanks for signing up, ${email}! We'll keep you posted.`);
+          document.getElementById('email').value = '';
+        } else {
+          alert('Oops! Something went wrong.');
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Network error. Please try again later.');
       }
-    } catch (err) {
-      console.error(err);
-      alert("Something went wrong. Please try again.");
     }
-  }
-</script>
-
-
+  </script>
 </body>
 </html>
