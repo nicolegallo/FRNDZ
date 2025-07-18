@@ -88,22 +88,24 @@
   async function handleSubmit(e) {
     e.preventDefault();
     const email = document.getElementById('email').value;
-    const endpoint = 'https://script.google.com/macros/s/AKfycbwPkSNSIRqwIRC7I6NV5eN49Gw7PfRzOGC9-gRYptTMwWhrCOX9aj6GGyVkpNFQILRb8A/exec'; // replace with your script URL
+    const endpoint = 'https://script.google.com/macros/s/AKfycbwPkSNSIRqwIRC7I6NV5eN49Gw7PfRzOGC9-gRYptTMwWhrCOX9aj6GGyVkpNFQILRb8A/exec'; // Replace with your new Apps Script URL
+    const url = `${endpoint}?email=${encodeURIComponent(email)}`;
 
     try {
-      await fetch(endpoint, {
-        method: 'POST',
-        body: JSON.stringify({ email }),
-        headers: { 'Content-Type': 'application/json' }
-      });
-      alert(`Thanks for signing up, ${email}! We'll keep you posted.`);
-      document.getElementById('email').value = '';
+      const response = await fetch(url); // GET request avoids CORS issues
+      if (response.ok) {
+        alert(`Thanks for signing up, ${email}! We'll keep you posted.`);
+        document.getElementById('email').value = '';
+      } else {
+        alert("Oops! Couldn't submit your email.");
+      }
     } catch (err) {
-      alert('Something went wrong. Please try again.');
       console.error(err);
+      alert("Something went wrong. Please try again.");
     }
   }
 </script>
+
 
 </body>
 </html>
