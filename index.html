@@ -84,13 +84,26 @@
   </div>
   <div class="footer">Launching soon on iOS – Follow us <a href="https://www.instagram.com/thefrndzapp" class="link-ig" target="_blank">@thefrndzapp</a> for updates</div>
 
-  <script>
-    function handleSubmit(e) {
-      e.preventDefault();
-      const email = document.getElementById('email').value;
+<script>
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const endpoint = 'https://script.google.com/macros/s/AKfycbwPkSNSIRqwIRC7I6NV5eN49Gw7PfRzOGC9-gRYptTMwWhrCOX9aj6GGyVkpNFQILRb8A/exec'; // replace with your script URL
+
+    try {
+      await fetch(endpoint, {
+        method: 'POST',
+        body: JSON.stringify({ email }),
+        headers: { 'Content-Type': 'application/json' }
+      });
       alert(`Thanks for signing up, ${email}! We'll keep you posted.`);
       document.getElementById('email').value = '';
+    } catch (err) {
+      alert('Something went wrong. Please try again.');
+      console.error(err);
     }
-  </script>
+  }
+</script>
+
 </body>
 </html>
