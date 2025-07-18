@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FRNDZ – Coming Soon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/Users/nicolegallo/Downloads/FRNDZ/FRNDZ_logo_website.png" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      background-color: #e24e08; /* FRNDZ Orange */
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .logo {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.3cap;
+    }
+
+    .logo-img {
+      width: 120px;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+    .tagline {
+      font-size: 1.25rem;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+    .email-signup input[type="email"] {
+      padding: 0.75rem;
+      border: none;
+      border-radius: 8px;
+      margin-right: 0.5rem;
+      font-size: 1rem;
+    }
+    .email-signup button {
+      padding: 0.75rem 1.25rem;
+      background-color: white;
+      color: #e24e08;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .email-signup button:hover {
+      opacity: 0.9;
+    }
+
+    
+    .footer {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      opacity: 0.75;
+    }
+.link-ig {
+    color:white;
+}
+     .link-ig:hover {
+      color: rgb(200, 200, 200);
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">FRNDZ</div>
+    <img src="/FRNDZ_logo_website.png" alt="FRNDZ Logo" class="logo-img" />
+  <div class="tagline">We met through FRNDZ.</div>
+  <div class="email-signup">
+    <form onsubmit="handleSubmit(event)">
+      <input type="email" id="email" placeholder="Enter your email" required />
+      <button type="submit">Notify Me</button>
+    </form>
+  </div>
+  <div class="footer">Launching soon on iOS – Follow us <a href="https://www.instagram.com/thefrndzapp" class="link-ig" target="_blank">@thefrndzapp</a> for updates</div>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      alert(`Thanks for signing up, ${email}! We'll keep you posted.`);
+      document.getElementById('email').value = '';
+    }
+  </script>
+</body>
+</html>
